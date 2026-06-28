@@ -25,7 +25,7 @@ public class WithersweeperConfig {
 			WaitingLobbyConfig.CODEC.fieldOf("players").forGetter(WithersweeperConfig::getPlayerConfig),
 			IntProviders.NON_NEGATIVE_CODEC.optionalFieldOf("ticks_until_close", ConstantInt.of(SharedConstants.TICKS_PER_SECOND * 5)).forGetter(WithersweeperConfig::getTicksUntilClose),
 			GameStatisticBundle.NAMESPACE_CODEC.optionalFieldOf("statistic_bundle_namespace").forGetter(WithersweeperConfig::getStatisticBundleNamespace),
-			ItemStackTemplate.CODEC.optionalFieldOf("flag_stack", new ItemStackTemplate(Items.RED_BANNER)).forGetter(WithersweeperConfig::getFlagStack),
+			ItemStackTemplate.CODEC.optionalFieldOf("flag_stack", new ItemStackTemplate(Items.BANNER.red())).forGetter(WithersweeperConfig::getFlagStack),
 			Codec.INT.optionalFieldOf("max_mistakes", 1).forGetter(WithersweeperConfig::getMaxMistakes)
 		).apply(instance, WithersweeperConfig::new);
 	});

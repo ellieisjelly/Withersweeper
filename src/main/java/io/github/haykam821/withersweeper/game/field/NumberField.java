@@ -6,15 +6,15 @@ import net.minecraft.network.chat.Component;
 
 public class NumberField extends Field {
 	private static final BlockState[] VALUES_TO_STATES = new BlockState[] {
-		Blocks.WHITE_WOOL.defaultBlockState(),
-		Blocks.BLUE_WOOL.defaultBlockState(),
-		Blocks.GREEN_WOOL.defaultBlockState(),
-		Blocks.RED_WOOL.defaultBlockState(),
-		Blocks.LIGHT_BLUE_WOOL.defaultBlockState(),
-		Blocks.BROWN_WOOL.defaultBlockState(),
-		Blocks.CYAN_WOOL.defaultBlockState(),
-		Blocks.BLACK_WOOL.defaultBlockState(),
-		Blocks.LIGHT_GRAY_WOOL.defaultBlockState()
+		Blocks.WOOL.white().defaultBlockState(),
+		Blocks.WOOL.blue().defaultBlockState(),
+		Blocks.WOOL.green().defaultBlockState(),
+		Blocks.WOOL.red().defaultBlockState(),
+		Blocks.WOOL.lightBlue().defaultBlockState(),
+		Blocks.WOOL.brown().defaultBlockState(),
+		Blocks.WOOL.cyan().defaultBlockState(),
+		Blocks.WOOL.black().defaultBlockState(),
+		Blocks.WOOL.lightGray().defaultBlockState()
 	};
 
 	private int value = 0;

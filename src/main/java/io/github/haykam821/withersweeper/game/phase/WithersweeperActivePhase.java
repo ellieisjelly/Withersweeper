@@ -8,7 +8,9 @@ import io.github.haykam821.withersweeper.game.board.Board;
 import io.github.haykam821.withersweeper.game.field.Field;
 import io.github.haykam821.withersweeper.game.field.FieldVisibility;
 import io.github.haykam821.withersweeper.game.field.NumberField;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.protocol.game.ClientboundSoundEntityPacket;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -40,6 +42,7 @@ import xyz.nucleoid.plasmid.api.game.stats.StatisticKeys;
 import xyz.nucleoid.plasmid.api.game.stats.StatisticMap;
 import xyz.nucleoid.plasmid.api.util.ItemStackBuilder;
 import xyz.nucleoid.plasmid.api.util.PlayerRef;
+import xyz.nucleoid.plasmid.api.util.PlayerUtil;
 import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.block.BlockUseEvent;
 import xyz.nucleoid.stimuli.event.item.ItemThrowEvent;
@@ -134,6 +137,7 @@ public class WithersweeperActivePhase {
 		Component text = this.getMistakeText(causer);
 		for (ServerPlayer player : this.gameSpace.getPlayers()) {
 			player.sendSystemMessage(text, false);
+			PlayerUtil.playSoundToPlayer(player, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.BLOCKS, 1, 1);
 		}
 
 		if (this.statistics != null) {
@@ -225,6 +229,7 @@ public class WithersweeperActivePhase {
 				Component text = Component.translatable("text.withersweeper.complete", this.timeElapsed / 20).withStyle(ChatFormatting.GOLD);
 				for (ServerPlayer player : this.gameSpace.getPlayers()) {
 					player.sendSystemMessage(text, false);
+					PlayerUtil.playSoundToPlayer(player, SoundEvents.PLAYER_LEVELUP, SoundSource.UI, 1, 1);
 				}
 
 				if (this.statistics != null) {
